@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Twelvelv">
 <meta property="og:description" content="我的计算机网络笔记">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-08T16:13:50.902Z">
+<meta property="og:updated_time" content="2018-04-09T11:34:00.308Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机网络">
 <meta name="twitter:description" content="我的计算机网络笔记">
@@ -429,7 +429,50 @@
 </blockquote>
 <p>虽然交换和电路交换都是如今电信网络中普遍采用的方式，但趋势无疑是朝着分组交换方向发展。</p>
 <h3 id="3-3网络的网络"><a href="#3-3网络的网络" class="headerlink" title="3.3网络的网络"></a>3.3网络的网络</h3><p>今天的因特网是一个网络的网络，其结构复杂，由十多个第一层ISP和数十万个较低层ISP组成。</p>
-
+<h2 id="4-分组交换网中的时延，丢包，吞吐量"><a href="#4-分组交换网中的时延，丢包，吞吐量" class="headerlink" title="4.分组交换网中的时延，丢包，吞吐量"></a>4.分组交换网中的时延，丢包，吞吐量</h2><p>理想情况下，我们希望因特网能够在任意两个端系统之间瞬间移动我们想要的大量数据而没有任何数据丢失。然而计算机网络必定要限制在端系统之间的吞吐量，在端系统之间引入时延，而且实际上还能够丢失分组。一方面<strong>由现实世界的物理定律引入的时延，丢包，限制吞吐量</strong>， 另一方面<strong>计算机网络本身存在这些问题</strong></p>
+<h3 id="4-1分组交换网络中的时延概述"><a href="#4-1分组交换网络中的时延概述" class="headerlink" title="4.1分组交换网络中的时延概述"></a>4.1分组交换网络中的时延概述</h3><p>分组从源出发，通过一系列路由器传输，在目的地结束它的历程。当分组从一个结点（主机或路由器）沿着这条路径到后继结点，该分组在沿途的每个结点经受了几种不同类型的时延，这些时延加起来就是<strong>结点总时延</strong><br><strong>时延类型</strong></p>
+<blockquote>
+<ul>
+<li>处理时延 <em>D</em>（proc）</li>
+<li>排队时延 <em>D</em>（queue）</li>
+<li>传输时延 <em>D</em>（trans）</li>
+<li>传播时延 <em>D</em>（prop）</li>
+</ul>
+</blockquote>
+<p>区别一下传输时延和传播时延：<br><em>传输时延</em> 是路由器将分组推出所需的时间，它是分组长度和链路传输速率的函数，与两台路由器之间的距离无关。<br><em>传播时延</em> 是一个比特从一台路由器向另一台路由器传播所需要的时间，它是两台路由器之间的函数，与分组长度或链路传输速率无关。<br>  <strong>总时延=处理时延+排队时延+传输时延+传播时延</strong></p>
+<h3 id="4-2排队时延和丢包"><a href="#4-2排队时延和丢包" class="headerlink" title="4.2排队时延和丢包"></a>4.2排队时延和丢包</h3><p>排队时延对不同分组可能是不同的（10个分组同时到达空队列，第一个分组没有排队时延，而最后一个会有较大的排队时延），因此我们表示排队时延的时候通常使用统计量测度（平均，方差，等）。排队时延很大程度上取决于流量到达该队列的速率，链路的传输速率，到达流量的性质（周期性到达还是突发式到达）。假设队列能容纳无穷多的分组时，平均排队时延随着<em>流量强度</em>趋于1而趋向无穷。</p>
+<p><strong>流量强度</strong> 是排队时延和丢包很重要的一个概念。</p>
+<p>丢包：队列能容纳的分组是有限的，因此随着<em>流量强度</em>趋于1，排队时延并不是趋于无穷。真实情况是，当到达队列的分组发现队列满了，由于没有地方存储这个分组，路由器将丢弃该分组。</p>
+<p><strong>一个节点的性能不仅根据时延来度量，也根据分组丢失的概率来度量</strong></p>
+<h3 id="4-3端到端时延"><a href="#4-3端到端时延" class="headerlink" title="4.3端到端时延"></a>4.3端到端时延</h3><p>从源到目的地的总时延。我们假定源到目的地之间有N-1台路由器，该网络无拥塞，在每台路由器和源主机上的处理时延是<strong>D</strong>(proc)，每台路由器和源主机的输出速率是 <strong>R</strong> bps，每条链路的传播时延是<strong>D</strong>(prop)。结点时延累加得到端时延：<br><strong>D</strong>(end-end)=<strong>N</strong>【<strong>D</strong>(proc)+<strong>D</strong>(trans)+<strong>D</strong>(prop)】<br>注：<strong>D</strong>(trans)=L/R,其中L是分组长度。</p>
+<h3 id="4-4计算机网络中的吞吐量"><a href="#4-4计算机网络中的吞吐量" class="headerlink" title="4.4计算机网络中的吞吐量"></a>4.4计算机网络中的吞吐量</h3><p>在任何时间瞬间的<em>瞬间吞吐量</em>是主机接收文件的速率。同理<em>平均吞吐量</em></p>
+<h2 id="5-协议层及其服务模型"><a href="#5-协议层及其服务模型" class="headerlink" title="5.协议层及其服务模型"></a>5.协议层及其服务模型</h2><p>组织网络体系结构，对网络体系结构进行讨论。</p>
+<h3 id="5-1分层的结构体系"><a href="#5-1分层的结构体系" class="headerlink" title="5.1分层的结构体系"></a>5.1分层的结构体系</h3><p>利用分层的体系结构，我们可以讨论一个定义良好的，大而复杂系统的特定部分。</p>
+<p>（1）协议分层（五层）<br>各层的所有协议被称为<strong>协议栈</strong>。<br>因特网的协议栈由五个层次组成：</p>
+<blockquote>
+<ul>
+<li>应用层：网络应用程序及它们应用层协议存留的地方。</li>
+<li>运输层：在应用系统端点之间传送应用层报文。</li>
+<li>网络层：将称为<em>数据报</em>的网络层分组从一台主机移动到另一台主机。</li>
+<li>链路层：分组从一个结点移动到下一个结点，网络层就得依靠链路层的服务。</li>
+<li>物理层：链路层将整个帧移动，物理层将该帧的一个个比特移动。</li>
+</ul>
+</blockquote>
+<p>（2）OSI模型（七层）</p>
+<blockquote>
+<ul>
+<li>应用层</li>
+<li>表示层</li>
+<li>会话层</li>
+<li>运输层</li>
+<li>网络层</li>
+<li>数据链路层</li>
+<li>物理层</li>
+</ul>
+</blockquote>
+<h3 id="5-2封装"><a href="#5-2封装" class="headerlink" title="5.2封装"></a>5.2封装</h3><p>在发送主机端，一个<em>应用层报文</em>被传送给运输层，运输层收取到报文并附上附加信息（运输层首部信息），该信息将被接受端的运输层使用。应用层报文和运输层首部信息共同构成了<strong>运输层报文段</strong>。运输层报文段因此封装了应用层报文。同理，运输层向网络层传输该报文段，网络层增加了网络层首部信息，产生了<strong>网络层数据报</strong>。该数据报又被传给链路层，链路层增加它的链路层首部信息，产生了<strong>链路层帧</strong></p>
+<p>每一层，一个分组具有两种类型的字段：首部字段和<em>有效荷载字段</em>。有效荷载通常来自上一层分组。</p>
+<h2 id="6-面对攻击的网络"><a href="#6-面对攻击的网络" class="headerlink" title="6.面对攻击的网络"></a>6.面对攻击的网络</h2>
       
     </div>
     
@@ -621,7 +664,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一章-计算机网络和因特网"><span class="nav-number">1.</span> <span class="nav-text">第一章 计算机网络和因特网</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-什么是因特网"><span class="nav-number">1.1.</span> <span class="nav-text">1.什么是因特网</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1具体构成描述"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1具体构成描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2服务描述"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2服务描述</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-网络边缘"><span class="nav-number">1.2.</span> <span class="nav-text">2.网络边缘</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接入网"><span class="nav-number">1.2.1.</span> <span class="nav-text">接入网</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-家庭接入"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">1.家庭接入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-企业接入"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">2.企业接入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-广域无线接入"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">3.广域无线接入</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#物理媒体"><span class="nav-number">1.2.2.</span> <span class="nav-text">物理媒体</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-网络核心"><span class="nav-number">1.3.</span> <span class="nav-text">3.网络核心</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1分组交换"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1分组交换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2电路交换"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2电路交换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#电路交换网络中的复用"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">电路交换网络中的复用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分组交换与电路交换的对比"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">分组交换与电路交换的对比</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3网络的网络"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3网络的网络</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一章-计算机网络和因特网"><span class="nav-number">1.</span> <span class="nav-text">第一章 计算机网络和因特网</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-什么是因特网"><span class="nav-number">1.1.</span> <span class="nav-text">1.什么是因特网</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1具体构成描述"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1具体构成描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2服务描述"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2服务描述</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-网络边缘"><span class="nav-number">1.2.</span> <span class="nav-text">2.网络边缘</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接入网"><span class="nav-number">1.2.1.</span> <span class="nav-text">接入网</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-家庭接入"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">1.家庭接入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-企业接入"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">2.企业接入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-广域无线接入"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">3.广域无线接入</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#物理媒体"><span class="nav-number">1.2.2.</span> <span class="nav-text">物理媒体</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-网络核心"><span class="nav-number">1.3.</span> <span class="nav-text">3.网络核心</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1分组交换"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1分组交换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2电路交换"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2电路交换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#电路交换网络中的复用"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">电路交换网络中的复用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分组交换与电路交换的对比"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">分组交换与电路交换的对比</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3网络的网络"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3网络的网络</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-分组交换网中的时延，丢包，吞吐量"><span class="nav-number">1.4.</span> <span class="nav-text">4.分组交换网中的时延，丢包，吞吐量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1分组交换网络中的时延概述"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1分组交换网络中的时延概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2排队时延和丢包"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.2排队时延和丢包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3端到端时延"><span class="nav-number">1.4.3.</span> <span class="nav-text">4.3端到端时延</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4计算机网络中的吞吐量"><span class="nav-number">1.4.4.</span> <span class="nav-text">4.4计算机网络中的吞吐量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-协议层及其服务模型"><span class="nav-number">1.5.</span> <span class="nav-text">5.协议层及其服务模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1分层的结构体系"><span class="nav-number">1.5.1.</span> <span class="nav-text">5.1分层的结构体系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2封装"><span class="nav-number">1.5.2.</span> <span class="nav-text">5.2封装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-面对攻击的网络"><span class="nav-number">1.6.</span> <span class="nav-text">6.面对攻击的网络</span></a></li></ol></li></ol></div>
             
 
           </div>
