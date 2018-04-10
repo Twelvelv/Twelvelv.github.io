@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Hexo,文章,简介" />
 
 
 
@@ -79,17 +79,20 @@
 
 
 
-<meta name="description" content="退而结网">
+<meta name="description" content="我的计算机网络-应用层笔记">
+<meta name="keywords" content="Hexo,文章,简介">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GitHub+Hexo">
-<meta property="og:url" content="http://yoursite.com/2018/03/31/GitHub-Hexo/index.html">
+<meta property="og:title" content="应用层">
+<meta property="og:url" content="http://yoursite.com/2018/04/09/应用层/index.html">
 <meta property="og:site_name" content="Twelvelv">
-<meta property="og:description" content="退而结网">
+<meta property="og:description" content="我的计算机网络-应用层笔记">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-31T08:29:46.077Z">
+<meta property="og:image" content="http://yoursite.com/2018/04/09/应用层/imageView2/0/q/75%7Cimageslim">
+<meta property="og:updated_time" content="2018-04-10T18:08:59.695Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GitHub+Hexo">
-<meta name="twitter:description" content="退而结网">
+<meta name="twitter:title" content="应用层">
+<meta name="twitter:description" content="我的计算机网络-应用层笔记">
+<meta name="twitter:image" content="http://yoursite.com/2018/04/09/应用层/imageView2/0/q/75%7Cimageslim">
 
 
 
@@ -119,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/31/GitHub-Hexo/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/09/应用层/"/>
 
 
 
 
 
-  <title>GitHub+Hexo | Twelvelv</title>
+  <title>应用层 | Twelvelv</title>
   
 
 
@@ -262,7 +265,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/31/GitHub-Hexo/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/09/应用层/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="不如人">
@@ -279,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">GitHub+Hexo</h1>
+          <h1 class="post-title" itemprop="name headline">应用层</h1>
         
 
         <div class="post-meta">
@@ -291,8 +294,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-31T16:29:46+08:00">
-                2018-03-31
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-09T20:31:21+08:00">
+                2018-04-09
               </time>
             
 
@@ -302,6 +305,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机网络/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -314,6 +339,10 @@
 
           
 
+          
+              <div class="post-description">
+                  我的计算机网络-应用层笔记
+              </div>
           
 
         </div>
@@ -329,7 +358,48 @@
       
 
       
-        
+        <p><img src="imageView2/0/q/75|imageslim" alt="试一下图片"></p>
+<h1 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h1><p>网络应用就是计算机网络存在的理由。本章学习有关计算机网络应用原理和实现方面的知识。<br>几个关键的应用层概念：</p>
+<blockquote>
+<ul>
+<li>应用层协议原理</li>
+<li>Web和HTTP</li>
+<li>FTP文件传输协议</li>
+<li>电子邮件的传输协议SMTP</li>
+<li>因特网的目录服务器DNS</li>
+<li>P2P应用</li>
+<li>TCP套接字</li>
+</ul>
+</blockquote>
+<h2 id="应用层协议原理"><a href="#应用层协议原理" class="headerlink" title="应用层协议原理"></a>应用层协议原理</h2><p>研发网络应用程序的核心是写出能够运行在不同的端系统和通过网络彼此通信的程序。而这个通信过程你不用去关心其他层的，只需要考虑应用层，这种将应用软件限制在端系统的方法，也促进了大量网络程序的迅速开发和部署。</p>
+<h3 id="网络应用体系结构"><a href="#网络应用体系结构" class="headerlink" title="网络应用体系结构"></a>网络应用体系结构</h3><p>两种主流体系结构：</p>
+<blockquote>
+<ul>
+<li>客户-服务器体系结构(C-S)</li>
+<li>对等(P2P)体系结构</li>
+</ul>
+</blockquote>
+<p><strong>客户-服务器体系结构</strong> 有一个总是打开的主机称为服务器，服务于来自客户端主机的请求。客户之间是不直接通信的，因为服务器具有固定的,周知的IP地址，并且服务器总是打开的，所以客户可以通过向服务器的IP发送分组与其联系。常见的基于客户-服务器体系结构的应用程序：Web,FTP,Telent,电子邮件。</p>
+<p><strong>P2P体系结构</strong> 对位于数据中心的专用服务器有最小的或者没有依赖。应用程序在间断连续的的主机对之间使用直接通信，这些主机对被称为 <em>对等方</em>。P2P最重要的特性之一就是它的 <em>自扩展性</em> ，又因为它通常不需要庞大的服务器基础设施和服务器带宽，所以它也是成本有效的。<br>P2P应用面临的三个主要挑战：</p>
+<blockquote>
+<ul>
+<li>ISP友好。多数住宅ISP受制于<em>非对称的</em>带宽应用，下载比上载多得多。而P2P需要上载流量。 </li>
+<li>安全性。这是因为P2P的<em>高度分布</em> 和 <em>开放</em> 特性</li>
+<li>激励。使用户自愿的向应用提供带宽，存储和计算资源</li>
+</ul>
+</blockquote>
+<h3 id="进程通信"><a href="#进程通信" class="headerlink" title="进程通信"></a>进程通信</h3><p>操作系统术语中，进行通信的实际上是 <em>进程</em> 而不是程序。一个进程可以被认为是运行在端系统中的一个程序。<br>两个不同端系统上的进程通过跨越计算机网络交换 <em>报文</em> 而互相通信。具体过程就是，发送进程生成并向网络发送报文，接收进程接收报文并将报文发送回去进行相应。<br>1.<strong>客户和服务器进程</strong><br>2.<strong>进程与计算机网络间的接口</strong><br>3.<strong>进程寻址</strong></p>
+<h3 id="可供应用程序使用的运输服务"><a href="#可供应用程序使用的运输服务" class="headerlink" title="可供应用程序使用的运输服务"></a>可供应用程序使用的运输服务</h3><p>应用程序对运输服务的要求：</p>
+<blockquote>
+<ul>
+<li>可靠数据传输：为了避免分组在计算机网络中丢失，确保应用程序发送的数据正确安全的交付而提供一个确保数据交付的服务，就认为提供了 <em>可靠数据传输</em></li>
+<li>吞吐量：发送进程能够向接收进程交付比特的速率。</li>
+<li>定时：交互式实时应用程序会有要求，<em>时延</em>。</li>
+<li>安全性：运输协议能进行数据的加密-解密，以防数据在两个进程之间被观察到。</li>
+</ul>
+</blockquote>
+<h3 id="因特网提供的运输服务"><a href="#因特网提供的运输服务" class="headerlink" title="因特网提供的运输服务"></a>因特网提供的运输服务</h3><p>因特网为应用程序提供了两个运输层协议：<strong>UDP</strong> <strong>TCP</strong><br>1.</p>
+<h3 id="应用层协议"><a href="#应用层协议" class="headerlink" title="应用层协议"></a>应用层协议</h3><h3 id="本书涉及的网络应用"><a href="#本书涉及的网络应用" class="headerlink" title="本书涉及的网络应用"></a>本书涉及的网络应用</h3><h2 id="Web和HTTP"><a href="#Web和HTTP" class="headerlink" title="Web和HTTP"></a>Web和HTTP</h2><h2 id="FTP文件传输协议"><a href="#FTP文件传输协议" class="headerlink" title="FTP文件传输协议"></a>FTP文件传输协议</h2><h2 id="电子邮件的传输协议SMTP"><a href="#电子邮件的传输协议SMTP" class="headerlink" title="电子邮件的传输协议SMTP"></a>电子邮件的传输协议SMTP</h2><h2 id="因特网的目录服务器DNS"><a href="#因特网的目录服务器DNS" class="headerlink" title="因特网的目录服务器DNS"></a>因特网的目录服务器DNS</h2><h2 id="P2P应用"><a href="#P2P应用" class="headerlink" title="P2P应用"></a>P2P应用</h2><h2 id="TCP套接字"><a href="#TCP套接字" class="headerlink" title="TCP套接字"></a>TCP套接字</h2>
       
     </div>
     
@@ -344,6 +414,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/计算机网络/" rel="tag"># 计算机网络</a>
+          
+            <a href="/tags/计算机网络-自顶向下/" rel="tag"># 计算机网络-自顶向下</a>
+          
+        </div>
+      
 
       
       
@@ -353,15 +431,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/04/08/计算机网络/" rel="next" title="计算机网络">
+                <i class="fa fa-chevron-left"></i> 计算机网络
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/03/介绍一下我的博客/" rel="prev" title="欢迎来到我的博客">
-                欢迎来到我的博客 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -413,8 +491,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -494,6 +581,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#应用层"><span class="nav-number">1.</span> <span class="nav-text">应用层</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#应用层协议原理"><span class="nav-number">1.1.</span> <span class="nav-text">应用层协议原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#网络应用体系结构"><span class="nav-number">1.1.1.</span> <span class="nav-text">网络应用体系结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程通信"><span class="nav-number">1.1.2.</span> <span class="nav-text">进程通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可供应用程序使用的运输服务"><span class="nav-number">1.1.3.</span> <span class="nav-text">可供应用程序使用的运输服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#因特网提供的运输服务"><span class="nav-number">1.1.4.</span> <span class="nav-text">因特网提供的运输服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用层协议"><span class="nav-number">1.1.5.</span> <span class="nav-text">应用层协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本书涉及的网络应用"><span class="nav-number">1.1.6.</span> <span class="nav-text">本书涉及的网络应用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web和HTTP"><span class="nav-number">1.2.</span> <span class="nav-text">Web和HTTP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FTP文件传输协议"><span class="nav-number">1.3.</span> <span class="nav-text">FTP文件传输协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#电子邮件的传输协议SMTP"><span class="nav-number">1.4.</span> <span class="nav-text">电子邮件的传输协议SMTP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#因特网的目录服务器DNS"><span class="nav-number">1.5.</span> <span class="nav-text">因特网的目录服务器DNS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P2P应用"><span class="nav-number">1.6.</span> <span class="nav-text">P2P应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP套接字"><span class="nav-number">1.7.</span> <span class="nav-text">TCP套接字</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
