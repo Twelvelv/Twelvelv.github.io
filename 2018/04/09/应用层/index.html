@@ -88,7 +88,7 @@
 <meta property="og:description" content="我的计算机网络-应用层笔记">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://dn-portal-files.qbox.me/sample1.jpg?imageView2/0/q/75">
-<meta property="og:updated_time" content="2018-04-16T05:14:20.462Z">
+<meta property="og:updated_time" content="2018-04-16T15:45:24.346Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="应用层">
 <meta name="twitter:description" content="我的计算机网络-应用层笔记">
@@ -398,13 +398,50 @@
 <li>安全性：运输协议能进行数据的加密-解密，以防数据在两个进程之间被观察到。</li>
 </ul>
 </blockquote>
-<h3 id="因特网提供的运输服务"><a href="#因特网提供的运输服务" class="headerlink" title="因特网提供的运输服务"></a>因特网提供的运输服务</h3><p>因特网为应用程序提供了两个运输层协议：<strong>UDP</strong> <strong>TCP</strong><br>| 应用       | 数据丢失 |  带宽  | 时间敏感|<br>| ——–   | :—–:  | :—-: | :—-:  |<br>| 文件传输   | 不能丢失 |  弹性  | 不      |<br>| 电子邮件   | 不能丢失 |  弹性  | 不      |<br>|  Web文档   | 不能丢失 |  弹性  | 不      |<br>|  因特网电话/视频会议| 不能丢失 |     | |<br>1.<strong>TCP</strong><br>TCP服务模型包括面向连接服务和可靠数据传输服务。当应用程序调用TCP作为其运输协议时，应用程序就能获得来自TCP的这两种服务。TCP协议还具有 <em>拥塞控制机制</em> （见第3章）</p>
+<h3 id="因特网提供的运输服务"><a href="#因特网提供的运输服务" class="headerlink" title="因特网提供的运输服务"></a>因特网提供的运输服务</h3><p>因特网为应用程序提供了两个运输层协议：<strong>UDP</strong> <strong>TCP</strong></p>
+<table>
+<thead>
+<tr>
+<th>应用</th>
+<th style="text-align:center">数据丢失</th>
+<th style="text-align:center">带宽</th>
+<th style="text-align:center">时间敏感</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>文件传输</td>
+<td style="text-align:center">不能丢失</td>
+<td style="text-align:center">弹性</td>
+<td style="text-align:center">不</td>
+</tr>
+<tr>
+<td>电子邮件</td>
+<td style="text-align:center">不能丢失</td>
+<td style="text-align:center">弹性</td>
+<td style="text-align:center">不</td>
+</tr>
+<tr>
+<td>Web文档</td>
+<td style="text-align:center">不能丢失</td>
+<td style="text-align:center">弹性</td>
+<td style="text-align:center">不</td>
+</tr>
+<tr>
+<td>因特网电话/视频会议</td>
+<td style="text-align:center">不能丢失</td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<p>1.<strong>TCP</strong><br>TCP服务模型包括面向连接服务和可靠数据传输服务。当应用程序调用TCP作为其运输协议时，应用程序就能获得来自TCP的这两种服务。TCP协议还具有 <em>拥塞控制机制</em> （见第3章）</p>
 <blockquote>
 <ul>
 <li><strong>面向连接的服务</strong>：在应用层数据报文开始流动之前，TCP让客户和服务器互相交换运输层控制信息。这个所谓的握手过程提示客户和服务器，使他们为大量分组的到来做好准备。在握手阶段后，一个 <em>TCP连接</em> 就在两个进程的套接字之间建立了。这条连接是全双工的，即连接双方的进程可以在此链接上同时进行报文收发。当应用程序结束报文发送时，必须拆除该链接。</li>
-<li><strong>可靠的数据传输服务</strong>通信进程能够依靠TCP，无差错，按适当顺序交付所有发送的数据。当应用程序的一端将字节流传进套接字时，它能够依靠TCP将相同的字节流交付给接收方的套接字，而没有字节的丢失和冗余。<br>2.<strong>UDP</strong><br>UDP是一种不提供不必要服务的轻量级运输协议，它仅提供最小服务。UDP是无法连接的，因此在两个进程通信之前没有握手过程。UDP协议提供一种<em>不可靠数据传输服务</em>，当进程将一个报文送进UDP套接字时，UDP协议并不保证该报文将到达接收进程，到达接收进程的报文也可能是乱序到达的。UDP协议没有 <em>拥塞控制机制</em><br>3.<strong>因特网运输协议不提供的服务</strong></li>
+<li><strong>可靠的数据传输服务</strong>通信进程能够依靠TCP，无差错，按适当顺序交付所有发送的数据。当应用程序的一端将字节流传进套接字时，它能够依靠TCP将相同的字节流交付给接收方的套接字，而没有字节的丢失和冗余。</li>
 </ul>
 </blockquote>
+<p>2.<strong>UDP</strong><br>UDP是一种不提供不必要服务的轻量级运输协议，它仅提供最小服务。UDP是无法连接的，因此在两个进程通信之前没有握手过程。UDP协议提供一种<em>不可靠数据传输服务</em>，当进程将一个报文送进UDP套接字时，UDP协议并不保证该报文将到达接收进程，到达接收进程的报文也可能是乱序到达的。UDP协议没有 <em>拥塞控制机制</em><br>3.<strong>因特网运输协议不提供的服务</strong></p>
 <h3 id="应用层协议"><a href="#应用层协议" class="headerlink" title="应用层协议"></a>应用层协议</h3><h3 id="本书涉及的网络应用"><a href="#本书涉及的网络应用" class="headerlink" title="本书涉及的网络应用"></a>本书涉及的网络应用</h3><h2 id="Web和HTTP"><a href="#Web和HTTP" class="headerlink" title="Web和HTTP"></a>Web和HTTP</h2><h2 id="FTP文件传输协议"><a href="#FTP文件传输协议" class="headerlink" title="FTP文件传输协议"></a>FTP文件传输协议</h2><h2 id="电子邮件的传输协议SMTP"><a href="#电子邮件的传输协议SMTP" class="headerlink" title="电子邮件的传输协议SMTP"></a>电子邮件的传输协议SMTP</h2><h2 id="因特网的目录服务器DNS"><a href="#因特网的目录服务器DNS" class="headerlink" title="因特网的目录服务器DNS"></a>因特网的目录服务器DNS</h2><h2 id="P2P应用"><a href="#P2P应用" class="headerlink" title="P2P应用"></a>P2P应用</h2><h2 id="TCP套接字"><a href="#TCP套接字" class="headerlink" title="TCP套接字"></a>TCP套接字</h2>
       
     </div>
