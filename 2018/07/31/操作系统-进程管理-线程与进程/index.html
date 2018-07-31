@@ -96,7 +96,11 @@
 <meta property="og:image" content="http://p6x2w6cwc.bkt.clouddn.com/2-1-3-3%E8%BF%9B%E7%A8%8B%E7%BB%88%E6%AD%A2.png">
 <meta property="og:image" content="http://p6x2w6cwc.bkt.clouddn.com/2-1-3-4%E8%BF%9B%E7%A8%8B%E9%98%BB%E5%A1%9E%E5%94%A4%E9%86%92.png">
 <meta property="og:image" content="http://p6x2w6cwc.bkt.clouddn.com/2-1-3-5%E8%BF%9B%E7%A8%8B%E5%88%87%E6%8D%A2.png">
-<meta property="og:updated_time" content="2018-07-31T10:21:12.096Z">
+<meta property="og:image" content="http://p6x2w6cwc.bkt.clouddn.com/2-1-4-1%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1.png">
+<meta property="og:image" content="http://p6x2w6cwc.bkt.clouddn.com/2-1-4-2%E5%85%B1%E4%BA%AB%E5%AD%98%E5%82%A8.png">
+<meta property="og:image" content="http://p6x2w6cwc.bkt.clouddn.com/2-1-4-3%E7%AE%A1%E9%81%93%E9%80%9A%E4%BF%A1.png">
+<meta property="og:image" content="http://p6x2w6cwc.bkt.clouddn.com/2-1-4-4%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92.png">
+<meta property="og:updated_time" content="2018-07-31T11:20:37.280Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统-进程管理-线程与进程">
 <meta name="twitter:description" content="操作系统-进程管理笔记">
@@ -415,16 +419,31 @@
 <ul>
 <li>所有的进程控制原语一定都会修改进程状态标志</li>
 <li>剥夺当前运行进程的CPU使用权必然要保存其运行环境</li>
-<li>某进程开始运行前必然要恢复其运行环境<br>2.将PCB插入合适的队列<br>3.分配/回收资源</li>
+<li>某进程开始运行前必然要恢复其运行环境</li>
 </ul>
 </blockquote>
+<p>2.将PCB插入合适的队列<br>3.分配/回收资源</p>
 <h3 id="进程的创建"><a href="#进程的创建" class="headerlink" title="进程的创建"></a>进程的创建</h3><p><img src="http://p6x2w6cwc.bkt.clouddn.com/2-1-3-2%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA.png" alt="进程创建"></p>
 <h3 id="进程的终止"><a href="#进程的终止" class="headerlink" title="进程的终止"></a>进程的终止</h3><p><img src="http://p6x2w6cwc.bkt.clouddn.com/2-1-3-3%E8%BF%9B%E7%A8%8B%E7%BB%88%E6%AD%A2.png" alt="进程终止"></p>
 <h3 id="进程的阻塞和唤醒"><a href="#进程的阻塞和唤醒" class="headerlink" title="进程的阻塞和唤醒"></a>进程的阻塞和唤醒</h3><p><img src="http://p6x2w6cwc.bkt.clouddn.com/2-1-3-4%E8%BF%9B%E7%A8%8B%E9%98%BB%E5%A1%9E%E5%94%A4%E9%86%92.png" alt="进程阻塞唤醒"></p>
 <p>阻塞原语唤醒原语必须成对使用，因何事阻塞就应由何事唤醒。</p>
 <h3 id="进程的切换"><a href="#进程的切换" class="headerlink" title="进程的切换"></a>进程的切换</h3><p><img src="http://p6x2w6cwc.bkt.clouddn.com/2-1-3-5%E8%BF%9B%E7%A8%8B%E5%88%87%E6%8D%A2.png" alt="进程切换"></p>
 <p>进程终止</p>
-
+<h2 id="进程通信"><a href="#进程通信" class="headerlink" title="进程通信"></a>进程通信</h2><p><img src="http://p6x2w6cwc.bkt.clouddn.com/2-1-4-1%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1.png" alt="进程通信"></p>
+<p>进程通信就是指进程间的信息交换<br>进程分配系统资源的单位（包括内存地址空间），因此各进程拥有的内存地址空间相互独立<br>为保证安全，一个进程不能直接访问另一个进程的地址空间。<br>但是进程之间的信息交换又是必须实现的。为了保证进程间的安全通信，操作系统提供了一些通信方法</p>
+<h3 id="共享存储"><a href="#共享存储" class="headerlink" title="共享存储"></a>共享存储</h3><p><img src="http://p6x2w6cwc.bkt.clouddn.com/2-1-4-2%E5%85%B1%E4%BA%AB%E5%AD%98%E5%82%A8.png" alt="共享存储"></p>
+<p>1.基于数据结构的共享：比如共享空间里只能放长度为10的数组。这种共享方式速度慢，限制多，是一种<strong>低级通信</strong>方式<br>2.基于存储区的共享：在内存中画出一块共享存储区，数据的形式，存放的位置都由进程控制，而不是操作系统。相比，这种共享方式速度更快，是一种<strong>高级通信</strong>方式</p>
+<h3 id="管道通信"><a href="#管道通信" class="headerlink" title="管道通信"></a>管道通信</h3><p><img src="http://p6x2w6cwc.bkt.clouddn.com/2-1-4-3%E7%AE%A1%E9%81%93%E9%80%9A%E4%BF%A1.png" alt="管道通信"></p>
+<p>1.管道只能采用半双工通信，某一时间段内只能实现单向的传输。如果要实现双向同时通信，则需要设置两个管道<br>2.各进程要<strong>互斥</strong>地访问管道<br>3.数据以字符流的形式写入管道，当管道写满时，写进程的Write()系统调用将被阻塞，等待读进程将数据取走。当读进程将数据全部取走后，管道变空，此时读进程的Read()系统调用将被阻塞<br>4.如果没有写满，就不允许读。如果没有读空，就不允许写<br>5.数据一旦被读出，就从管道中被抛弃，这就意味着读进程最多只能有一个，否则可能会有读错数据的情况</p>
+<h3 id="消息传递"><a href="#消息传递" class="headerlink" title="消息传递"></a>消息传递</h3><p><img src="http://p6x2w6cwc.bkt.clouddn.com/2-1-4-4%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92.png" alt="消息传递"></p>
+<p>进程间的数据交换以个实话的消息（Message）为单位。进程通过操作系统提供的“发送消息/接收消息”两个原语进行数据交换</p>
+<blockquote>
+<ul>
+<li>直接通信方式：消息直接挂到接收进程的消息缓冲队列上</li>
+<li>间接通信方式：消息要发送先发送到中间实体（信箱）中，因此也称“信箱通信方式”</li>
+</ul>
+</blockquote>
+<h2 id="线程概念和多线程模型"><a href="#线程概念和多线程模型" class="headerlink" title="线程概念和多线程模型"></a>线程概念和多线程模型</h2>
       
     </div>
     
@@ -618,7 +637,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#进程与线程"><span class="nav-number">1.</span> <span class="nav-text">进程与线程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#进程的概念和特征"><span class="nav-number">1.1.</span> <span class="nav-text">进程的概念和特征</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#进程的定义"><span class="nav-number">1.1.1.</span> <span class="nav-text">进程的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程的组成"><span class="nav-number">1.1.2.</span> <span class="nav-text">进程的组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程的组织方式"><span class="nav-number">1.1.3.</span> <span class="nav-text">进程的组织方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程的特征"><span class="nav-number">1.1.4.</span> <span class="nav-text">进程的特征</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程的状态转换"><span class="nav-number">1.2.</span> <span class="nav-text">进程的状态转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#进程的五种状态"><span class="nav-number">1.2.1.</span> <span class="nav-text">进程的五种状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程状态间的转换"><span class="nav-number">1.2.2.</span> <span class="nav-text">进程状态间的转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程控制"><span class="nav-number">1.3.</span> <span class="nav-text">进程控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#进程的创建"><span class="nav-number">1.3.1.</span> <span class="nav-text">进程的创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程的终止"><span class="nav-number">1.3.2.</span> <span class="nav-text">进程的终止</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程的阻塞和唤醒"><span class="nav-number">1.3.3.</span> <span class="nav-text">进程的阻塞和唤醒</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程的切换"><span class="nav-number">1.3.4.</span> <span class="nav-text">进程的切换</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#进程与线程"><span class="nav-number">1.</span> <span class="nav-text">进程与线程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#进程的概念和特征"><span class="nav-number">1.1.</span> <span class="nav-text">进程的概念和特征</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#进程的定义"><span class="nav-number">1.1.1.</span> <span class="nav-text">进程的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程的组成"><span class="nav-number">1.1.2.</span> <span class="nav-text">进程的组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程的组织方式"><span class="nav-number">1.1.3.</span> <span class="nav-text">进程的组织方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程的特征"><span class="nav-number">1.1.4.</span> <span class="nav-text">进程的特征</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程的状态转换"><span class="nav-number">1.2.</span> <span class="nav-text">进程的状态转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#进程的五种状态"><span class="nav-number">1.2.1.</span> <span class="nav-text">进程的五种状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程状态间的转换"><span class="nav-number">1.2.2.</span> <span class="nav-text">进程状态间的转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程控制"><span class="nav-number">1.3.</span> <span class="nav-text">进程控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#进程的创建"><span class="nav-number">1.3.1.</span> <span class="nav-text">进程的创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程的终止"><span class="nav-number">1.3.2.</span> <span class="nav-text">进程的终止</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程的阻塞和唤醒"><span class="nav-number">1.3.3.</span> <span class="nav-text">进程的阻塞和唤醒</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程的切换"><span class="nav-number">1.3.4.</span> <span class="nav-text">进程的切换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程通信"><span class="nav-number">1.4.</span> <span class="nav-text">进程通信</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#共享存储"><span class="nav-number">1.4.1.</span> <span class="nav-text">共享存储</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#管道通信"><span class="nav-number">1.4.2.</span> <span class="nav-text">管道通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#消息传递"><span class="nav-number">1.4.3.</span> <span class="nav-text">消息传递</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程概念和多线程模型"><span class="nav-number">1.5.</span> <span class="nav-text">线程概念和多线程模型</span></a></li></ol></li></ol></div>
             
 
           </div>
