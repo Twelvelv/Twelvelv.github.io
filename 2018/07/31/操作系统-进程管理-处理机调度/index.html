@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Hexo,文章,考研" />
 
 
 
@@ -79,17 +79,37 @@
 
 
 
-<meta name="description" content="退而结网">
+<meta name="description" content="操作系统-进程管理笔记">
+<meta name="keywords" content="Hexo,文章,考研">
 <meta property="og:type" content="article">
 <meta property="og:title" content="处理机调度">
 <meta property="og:url" content="http://yoursite.com/2018/07/31/操作系统-进程管理-处理机调度/index.html">
 <meta property="og:site_name" content="Twelvelv">
-<meta property="og:description" content="退而结网">
+<meta property="og:description" content="操作系统-进程管理笔记">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-31T12:38:44.344Z">
+<meta property="og:image" content="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-1%E5%A4%84%E7%90%86%E6%9C%BA%E8%B0%83%E5%BA%A6.png">
+<meta property="og:image" content="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-2%E4%B8%89%E5%B1%82%E8%B0%83%E5%BA%A6.png">
+<meta property="og:image" content="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-2%E4%B8%83%E7%8A%B6%E6%80%81%E5%9B%BE.png">
+<meta property="og:image" content="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-3%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E6%80%BB.png">
+<meta property="og:image" content="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-3%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E6%97%B6%E6%9C%BA.png">
+<meta property="og:image" content="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-3%E4%B8%B4%E7%95%8C%E5%8C%BA.png">
+<meta property="og:image" content="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-4%E8%AF%84%E4%BB%B7%E6%A0%87%E5%87%86.png">
+<meta property="og:image" content="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-4FCFS.png">
+<meta property="og:image" content="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-4FCFSeg.png">
+<meta property="og:image" content="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-4SJF.png">
+<meta property="og:image" content="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-4SJFeg1.png">
+<meta property="og:image" content="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-4SJFeg2.png">
+<meta property="og:image" content="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-4SJF%E7%BB%86%E8%8A%82.png">
+<meta property="og:image" content="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-4HRRN.png">
+<meta property="og:image" content="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-4HRRNeg.png">
+<meta property="og:image" content="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-4RR.png">
+<meta property="og:image" content="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-4%E4%BC%98%E5%85%88%E7%BA%A7%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95.png">
+<meta property="og:image" content="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-4%E5%A4%9A%E7%BA%A7%E5%8F%8D%E9%A6%88.png">
+<meta property="og:updated_time" content="2018-08-01T11:05:37.685Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="处理机调度">
-<meta name="twitter:description" content="退而结网">
+<meta name="twitter:description" content="操作系统-进程管理笔记">
+<meta name="twitter:image" content="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-1%E5%A4%84%E7%90%86%E6%9C%BA%E8%B0%83%E5%BA%A6.png">
 
 
 
@@ -302,6 +322,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/操作系统/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -314,6 +356,10 @@
 
           
 
+          
+              <div class="post-description">
+                  操作系统-进程管理笔记
+              </div>
           
 
         </div>
@@ -329,7 +375,59 @@
       
 
       
-        
+        <h1 id="处理机调度"><a href="#处理机调度" class="headerlink" title="处理机调度"></a>处理机调度</h1><p><img src="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-1%E5%A4%84%E7%90%86%E6%9C%BA%E8%B0%83%E5%BA%A6.png" alt="处理机调度"></p>
+<h2 id="调度的概念"><a href="#调度的概念" class="headerlink" title="调度的概念"></a>调度的概念</h2><p>当有一堆任务要处理，但是由于资源有限，这些事情没法同时处理。这就需要<strong>某种规则</strong>来决定处理这些任务的<strong>顺序</strong>，这就是“调度”要研究的问题。</p>
+<p>在多道程序系统中，进程的数量往往是多于处理机的个数的，这样不可能同时并行的处理各个进程。<strong>处理机调度</strong>，就是从就绪队列中<strong>按照一定的算法选择一个进程并将处理机分配给它运行</strong>，以实现进程的并发执行。</p>
+<h3 id="调度的三个层次"><a href="#调度的三个层次" class="headerlink" title="调度的三个层次"></a>调度的三个层次</h3><p><img src="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-2%E4%B8%89%E5%B1%82%E8%B0%83%E5%BA%A6.png" alt="三层调度"></p>
+<h4 id="高级调度"><a href="#高级调度" class="headerlink" title="高级调度"></a>高级调度</h4><p>由于内存空间有限，有时无法将用户提交的作业全部放入内存，因此就需要确定某种规则来决定将作业调入内存的顺序。</p>
+<p>高级调度(作业调度)。按一定的原则从外存，上处于后备队列的作业中挑选一个(或多个)作业，给他们分配内存等必要资源，并建立相应的进程(建立PCB)，以使它(们)获得竞争处理机的权利。</p>
+<p>高级调度是辅存(外存)与内存之间的调度。每个作业只调入一次，调出一次。<strong>作业调入时会建立相应的PCB，作业调出时才撤销PCB。</strong>高级调度主要是指调入的问题，因为只有调入的时机需要操作系统来确定，但调出的时机必然是作业运行结束才调出。</p>
+<h4 id="中级调度"><a href="#中级调度" class="headerlink" title="中级调度"></a>中级调度</h4><p>引入了虚拟存储技术之后，可将暂时不能运行的进程调至外存等待。等它重新具备了运行条件且内存又稍有空闲时，再重新调入内存。</p>
+<p>这么做的目的是为了提高内存利用率和系统吞吐量。</p>
+<p>暂时调到外存等待的进程状态为<strong>挂起状态</strong>。值得注意的是，PCB并不会一起调到外存，而是会常驻内存。PCB中会记录进程数据在外存中的存放位置，进程状态等信息，操作系统通过内存中的PCB来保持对各个进程的监控、管理。被挂起的进程PCB会被放到的挂起队列中。</p>
+<p>中级调度(内存调度)，就是要决定将哪个处于挂起状态的进程重新调入内存。<br>一个进程可能会被多次调出、调入内存，因此中级调度发生的频率要比高级调度更高。</p>
+<h4 id="低级调度"><a href="#低级调度" class="headerlink" title="低级调度"></a>低级调度</h4><p>低级调度(进程调度)，其主要任务是按照某种方法和策略从就绪队列中选取一一个进程，将处理机分配给它。</p>
+<p>进程调度是操作系统中最基本的一种调度,在一般的操作系统中都必须配置进程调度。</p>
+<p>进程调度的频率很高，一般为几十毫秒一次。</p>
+<h4 id="挂起状态和七状态图"><a href="#挂起状态和七状态图" class="headerlink" title="挂起状态和七状态图"></a>挂起状态和七状态图</h4><p><img src="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-2%E4%B8%83%E7%8A%B6%E6%80%81%E5%9B%BE.png" alt="七状态图"></p>
+<h2 id="处理机的时机切换与过程调度方式"><a href="#处理机的时机切换与过程调度方式" class="headerlink" title="处理机的时机切换与过程调度方式"></a>处理机的时机切换与过程调度方式</h2><p><img src="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-3%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E6%80%BB.png" alt="进程调度总"></p>
+<h3 id="时机"><a href="#时机" class="headerlink" title="时机"></a>时机</h3><p><img src="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-3%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E6%97%B6%E6%9C%BA.png" alt="时机"></p>
+<p>进程在操作操作系统中内核程序临界区中是不能进行调度与切换<br>（2012联考）进程处于临界区时不能进行处理机调度（错）<br>进程在普通临界区是可以进行调度和切换的。</p>
+<p><strong>临界资源VS临界区</strong></p>
+<p><img src="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-3%E4%B8%B4%E7%95%8C%E5%8C%BA.png" alt="临界区"></p>
+<h3 id="切换与过程"><a href="#切换与过程" class="headerlink" title="切换与过程"></a>切换与过程</h3><p>“狭义的进程调度”与“进程切换”的区别:</p>
+<p><strong>狭义的进程调度</strong>指的是从就绪队列中选中一个要运行的进程。(这个进程可以是刚刚被暂停执行的进程，也可能是另一个进程，后一种情况就需要进程切换)</p>
+<p><strong>进程切换</strong>是指一个进程让出处理机，由另一一个进程占用处理机的过程。</p>
+<p><strong>广义的进程调度</strong>切换包含了选择一个进程和进程切换两个步骤。</p>
+<p>进程切换的过程主要完成了:<br>1.对原来运行进程各种数据的保存<br>2.对新的进程各种数据的恢复(如:程序计数器、程序状态字、各种数据寄存器等处理机现场信息，这些信息一般保存在进程控制块)</p>
+<p>注意:进程切换是有代价的，因此如果过于频繁的进行进程调度、切换，必然会使整个系统的效率降低，使系统大部分时间都花在了进程切换上，而真正用于执行进程的时间减少。</p>
+<h3 id="方式"><a href="#方式" class="headerlink" title="方式"></a>方式</h3><p>1.<strong>非剥夺调度方式</strong>，又称非抢占方式。即，只允许进程主动放弃处理机。在运行过程中即便有更紧迫的任务到达，当前进程依然会继续使用处理机，直到该进程终止或主动要求进入阻塞态。</p>
+<p>实现简单，系统开销小但是无法及时处理紧急任务，适合于早期的批处理系统</p>
+<p>2.<strong>剥夺调度方式</strong>，又称抢占方式。当一个进程正在处理机.上执行时，如果有一个更重要或更紧迫的进程需要使用处理机，则立即暂停正在执行的进程，将处理机分配给更重要紧迫的那个进程。</p>
+<p>可以优先处理更紧急的进程，也可实现让各进程按时间片轮流执行的功能(通过时钟中断)。适合于分时操作系统、实时操作系统</p>
+<h2 id="调度算法"><a href="#调度算法" class="headerlink" title="调度算法"></a>调度算法</h2><h3 id="评价指标"><a href="#评价指标" class="headerlink" title="评价指标"></a>评价指标</h3><p><img src="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-4%E8%AF%84%E4%BB%B7%E6%A0%87%E5%87%86.png" alt="评价标准"></p>
+<p>1.CPU利用率：CPU“忙碌”的时间占总时间的比例。</p>
+<p>利用率=忙碌时间/总时间</p>
+<p>2.系统吞吐量：单位时间内完成作业的数量</p>
+<p>系统吞吐量=总共完成了多少道作业/总共花了多少时间</p>
+<p>3.周转时间：是指从作业被提交给系统开始，到作业完成为止的这段时间间隔。</p>
+<p>它包括四个部分:作业在外存后备队列，上等待作业调度(高级调度)的时间、进程在就绪队列上等待进程调度(低级调度)的时间、进程在CPU上执行的时间、进程等待I/O操作完成的时间。后三项在一个作业的整个处理过程中，可能发生多次。</p>
+<p>周转时间=作业完成时间-作业提交时间</p>
+<p>平均周转时间=各作业周转时间之和/作业数</p>
+<p>带权周转时间=作业周转时间/作业实际运行的时间=（作业完成时间-作业提交时间）/作业实际运行时间</p>
+<p>平均带权周转时间=各作业带权周转时间之和/作业数</p>
+<p>4.等待时间：进程/作业处于等待处理机状态时间之和</p>
+<p>5.响应时间：从用户提交请求到首次产生响应所用的时间</p>
+<h3 id="先来先服务"><a href="#先来先服务" class="headerlink" title="先来先服务"></a>先来先服务</h3><p><img src="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-4FCFS.png" alt="FCFS"></p>
+<p><img src="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-4FCFSeg.png" alt="FCFSeg"></p>
+<h3 id="短作业优先"><a href="#短作业优先" class="headerlink" title="短作业优先"></a>短作业优先</h3><p><img src="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-4SJF.png" alt="SJF"><br><img src="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-4SJFeg1.png" alt="SJFeg1"><br><img src="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-4SJFeg2.png" alt="SJFeg2"><br><img src="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-4SJF%E7%BB%86%E8%8A%82.png" alt="SJF细节"></p>
+<h3 id="高响应比优先"><a href="#高响应比优先" class="headerlink" title="高响应比优先"></a>高响应比优先</h3><p><img src="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-4HRRN.png" alt="HRRN"></p>
+<p><img src="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-4HRRNeg.png" alt="HRRNeg"></p>
+<h3 id="时间片轮转调度算法"><a href="#时间片轮转调度算法" class="headerlink" title="时间片轮转调度算法"></a>时间片轮转调度算法</h3><p><img src="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-4RR.png" alt="RR"></p>
+<h3 id="优先级调度算法"><a href="#优先级调度算法" class="headerlink" title="优先级调度算法"></a>优先级调度算法</h3><p><img src="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-4%E4%BC%98%E5%85%88%E7%BA%A7%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95.png" alt="优先级调度算法"></p>
+<h3 id="多级反馈调度算法"><a href="#多级反馈调度算法" class="headerlink" title="多级反馈调度算法"></a>多级反馈调度算法</h3><p><img src="http://p6x2w6cwc.bkt.clouddn.com/1-2-2-4%E5%A4%9A%E7%BA%A7%E5%8F%8D%E9%A6%88.png" alt="多级调度"></p>
+<p><strong>后面几个凑活记录一下，比较麻烦，有时间了再补上详细的。</strong></p>
+
       
     </div>
     
@@ -343,6 +441,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/操作系统/" rel="tag"># 操作系统</a>
+          
+            <a href="/tags/进程管理，处理机调度/" rel="tag"># 进程管理，处理机调度</a>
+          
+            <a href="/tags/考研复习/" rel="tag"># 考研复习</a>
+          
+        </div>
       
 
       
@@ -362,6 +470,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/01/操作系统-进程管理-进程同步/" rel="prev" title="操作系统-进程管理-进程同步">
+                操作系统-进程管理-进程同步 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -413,8 +525,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -433,7 +554,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -455,7 +576,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -494,6 +615,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#处理机调度"><span class="nav-number">1.</span> <span class="nav-text">处理机调度</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#调度的概念"><span class="nav-number">1.1.</span> <span class="nav-text">调度的概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#调度的三个层次"><span class="nav-number">1.1.1.</span> <span class="nav-text">调度的三个层次</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#高级调度"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">高级调度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#中级调度"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">中级调度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#低级调度"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">低级调度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#挂起状态和七状态图"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">挂起状态和七状态图</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#处理机的时机切换与过程调度方式"><span class="nav-number">1.2.</span> <span class="nav-text">处理机的时机切换与过程调度方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#时机"><span class="nav-number">1.2.1.</span> <span class="nav-text">时机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#切换与过程"><span class="nav-number">1.2.2.</span> <span class="nav-text">切换与过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方式"><span class="nav-number">1.2.3.</span> <span class="nav-text">方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调度算法"><span class="nav-number">1.3.</span> <span class="nav-text">调度算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#评价指标"><span class="nav-number">1.3.1.</span> <span class="nav-text">评价指标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#先来先服务"><span class="nav-number">1.3.2.</span> <span class="nav-text">先来先服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#短作业优先"><span class="nav-number">1.3.3.</span> <span class="nav-text">短作业优先</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高响应比优先"><span class="nav-number">1.3.4.</span> <span class="nav-text">高响应比优先</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时间片轮转调度算法"><span class="nav-number">1.3.5.</span> <span class="nav-text">时间片轮转调度算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优先级调度算法"><span class="nav-number">1.3.6.</span> <span class="nav-text">优先级调度算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多级反馈调度算法"><span class="nav-number">1.3.7.</span> <span class="nav-text">多级反馈调度算法</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
