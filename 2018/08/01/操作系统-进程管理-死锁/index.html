@@ -88,7 +88,7 @@
 <meta property="og:description" content="操作系统-进程管理笔记">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p6x2w6cwc.bkt.clouddn.com/1-2-4%E6%AD%BB%E9%94%81.png">
-<meta property="og:updated_time" content="2018-08-15T23:44:08.145Z">
+<meta property="og:updated_time" content="2018-08-16T01:14:38.103Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="死锁">
 <meta name="twitter:description" content="操作系统-进程管理笔记">
@@ -359,7 +359,7 @@
 
       
         <p><img src="http://p6x2w6cwc.bkt.clouddn.com/1-2-4%E6%AD%BB%E9%94%81.png" alt="死锁"></p>
-<h1 id="死锁的概念"><a href="#死锁的概念" class="headerlink" title="死锁的概念"></a>死锁的概念</h1><p>死锁的定义：死锁是指多个进程因竞争资源而造成的一种僵局（互相等待），若无外力作用，这些进程都将无法向前推进。</p>
+<h1 id="死锁的概念"><a href="#死锁的概念" class="headerlink" title="死锁的概念"></a>死锁的概念</h1><p>死锁的定义：死锁是指多个进程因竞争资源而造成的一种僵局(互相等待),若无外力作用,这些进程都将无法向前推进</p>
 <h2 id="死锁产生的原因"><a href="#死锁产生的原因" class="headerlink" title="死锁产生的原因"></a>死锁产生的原因</h2><p>1.系统资源的竞争：</p>
 <p>只有对不可剥夺资源的竞争才能产生死锁，对可剥夺资源是不会引起死锁的。</p>
 <p>2.进程推进顺序非法：</p>
@@ -400,6 +400,21 @@
 </tr>
 </tbody>
 </table>
+<h2 id="死锁预防"><a href="#死锁预防" class="headerlink" title="死锁预防"></a>死锁预防</h2><p>设置限制条件，破坏产生死锁的四个必要条件的一个或者几个，以防止发生死锁。</p>
+<p>1.破坏互斥条件：</p>
+<p>若系统资源都能共享使用，系统就不会进入死锁。<br>这个方法不可行，因为有些资源根本不能同时访问。（打印机等临界资源只能互斥访问）</p>
+<p>2.破坏不剥夺条件：</p>
+<p>当一个已经保持了某些不可剥夺资源的进程，请求新的资源得不到满足时，它必须释放保持的所有资源，待以后需要时重新申请。（即该进程占有的资源会被剥夺，于是破坏了不可剥夺条件）</p>
+<p>该策略实现比较复杂，释放已获得的资源可能造成前一阶段工作的失效，反复的申请和释放资源会增加系统开销，降低系统吞吐量。</p>
+<p>该方法常用于状态易于保存和恢复的资源。（CPU的寄存器及内存资源）一般不能用于打印机之类的资源。</p>
+<h3 id="破坏请求和保持条件"><a href="#破坏请求和保持条件" class="headerlink" title="破坏请求和保持条件"></a>破坏请求和保持条件</h3><p>采用预先静态分配方法，进程在运行前一次申请完它所需要的全部资源，在它的资源未满足前，不把它投入运行。一旦投入运行，这些资源就一直归它所有，不再提出其它资源请求，因而保证系统不会发生死锁。</p>
+<p>该方法实现简单，缺点是系统资源被严重浪费，还会导致”饥饿”现象。</p>
+<h3 id="破坏等待条件"><a href="#破坏等待条件" class="headerlink" title="破坏等待条件"></a>破坏等待条件</h3><p>采用顺续资源分配法，首先给系统中的资源编号，规定每个进程必须按编号递增的顺序请求资源，同类资源一次申请完。（即，只要进程提出申请分配资源Ri，则该进程在以后的资源申请中，只能申请编号大于Ri的资源。</p>
+<p>这种方法的问题是，编号必须相对稳定，这限制了新类型设备的增加。</p>
+<h2 id="死锁避免"><a href="#死锁避免" class="headerlink" title="死锁避免"></a>死锁避免</h2><p>在资源分配过程中，防止系统进入不安全状态，以避免发生死锁。</p>
+<h3 id="系统安全状态"><a href="#系统安全状态" class="headerlink" title="系统安全状态"></a>系统安全状态</h3><p>安全状态，是指系统能按某种进程推进顺序（P1,P2,P3….Pn），为每个进程Pi分配其所需资源，直至满足每个进程对资源的最大需求，使每个进程都可以顺序的完成。此时称 P1,P2,P3….Pn为安全序列。如果系统无法找到一个安全序列，则称系统处于不安全状态。</p>
+<h3 id="银行家算法"><a href="#银行家算法" class="headerlink" title="银行家算法"></a>银行家算法</h3><p>略。。。。。</p>
+<h2 id="死锁检测和解除"><a href="#死锁检测和解除" class="headerlink" title="死锁检测和解除"></a>死锁检测和解除</h2><p>用资源分配图来检测。</p>
 
       
     </div>
@@ -598,7 +613,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#死锁的概念"><span class="nav-number">1.</span> <span class="nav-text">死锁的概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#死锁产生的原因"><span class="nav-number">1.1.</span> <span class="nav-text">死锁产生的原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#死锁处理策略"><span class="nav-number">1.2.</span> <span class="nav-text">死锁处理策略</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#死锁的概念"><span class="nav-number">1.</span> <span class="nav-text">死锁的概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#死锁产生的原因"><span class="nav-number">1.1.</span> <span class="nav-text">死锁产生的原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#死锁处理策略"><span class="nav-number">1.2.</span> <span class="nav-text">死锁处理策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#死锁预防"><span class="nav-number">1.3.</span> <span class="nav-text">死锁预防</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#破坏请求和保持条件"><span class="nav-number">1.3.1.</span> <span class="nav-text">破坏请求和保持条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#破坏等待条件"><span class="nav-number">1.3.2.</span> <span class="nav-text">破坏等待条件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#死锁避免"><span class="nav-number">1.4.</span> <span class="nav-text">死锁避免</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#系统安全状态"><span class="nav-number">1.4.1.</span> <span class="nav-text">系统安全状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#银行家算法"><span class="nav-number">1.4.2.</span> <span class="nav-text">银行家算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#死锁检测和解除"><span class="nav-number">1.5.</span> <span class="nav-text">死锁检测和解除</span></a></li></ol></li></ol></div>
             
 
           </div>
